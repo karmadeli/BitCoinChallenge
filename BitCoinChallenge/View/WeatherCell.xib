@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina3_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="weatherCell" selectionStyle="none" indentationWidth="10" rowHeight="95" id="KGk-i7-Jjw" customClass="WeatherCell" customModule="BitCoinChallenge">
+            <rect key="frame" x="0.0" y="0.0" width="271" height="95"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="271" height="94.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DM3-wT-akz">
+                        <rect key="frame" x="195" y="17.5" width="60" height="60"/>
+                        <color key="backgroundColor" red="0.94901960780000005" green="0.72156862749999995" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="4QN-hZ-rDR"/>
+                            <constraint firstAttribute="width" constant="60" id="ywE-y6-Pbr"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <integer key="value" value="30"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="90" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FbW-Jq-LTB">
+                        <rect key="frame" x="160" y="32.5" width="31" height="30"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="249" horizontalCompressionResistancePriority="751" text="Toyko" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gak-mb-Mmt">
+                        <rect key="frame" x="16" y="32.5" width="63" height="29.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="Gak-mb-Mmt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="AKw-dg-DOm"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="DM3-wT-akz" secondAttribute="trailing" id="BAr-es-mdC"/>
+                    <constraint firstItem="DM3-wT-akz" firstAttribute="leading" secondItem="FbW-Jq-LTB" secondAttribute="trailing" constant="4" id="S8V-gc-2Mu"/>
+                    <constraint firstItem="Gak-mb-Mmt" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Tp6-f7-LZ9"/>
+                    <constraint firstItem="DM3-wT-akz" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="U8d-h8-hte"/>
+                    <constraint firstItem="FbW-Jq-LTB" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="VpX-9m-5cb"/>
+                    <constraint firstItem="FbW-Jq-LTB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Gak-mb-Mmt" secondAttribute="trailing" constant="8" id="uit-sz-Dkc"/>
+                    <constraint firstItem="FbW-Jq-LTB" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="xkr-OM-hV3"/>
+                    <constraint firstItem="Gak-mb-Mmt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="21.5" id="ytg-3W-qFB"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+            <connections>
+                <outlet property="icon" destination="DM3-wT-akz" id="zsW-R3-zOj"/>
+                <outlet property="name" destination="Gak-mb-Mmt" id="z4d-Kq-CXg"/>
+                <outlet property="temp" destination="FbW-Jq-LTB" id="RdX-KQ-0xL"/>
+            </connections>
+            <point key="canvasLocation" x="55.3125" y="99.375"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -1,0 +1,6 @@
+framework module Pods_BitCoinChallengeTests {
+  umbrella header "Pods-BitCoinChallengeTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
