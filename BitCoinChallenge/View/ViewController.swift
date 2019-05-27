@@ -14,7 +14,6 @@ class ViewController: UITableViewController {
   
     //MARK: - Properties
     let viewModel = WeatherDataViewModel()
-    let locationManager = CLLocationManager()
     var notificationToken: NotificationToken?
     
     //MARK: - LifeCycle
@@ -35,7 +34,8 @@ class ViewController: UITableViewController {
         viewModel.setTitleView(navItem: navigationItem)
         self.tableView.register(UINib(nibName: "WeatherCell", bundle: nil), forCellReuseIdentifier: "weatherCell")
         tableView.tableFooterView = UIView()
-
+        
+        //Realm triggered datasource refresh
         notificationToken = RealmCRUDService.shared.realm?.observe({ [weak self] (notification, realm) in
             self?.tableView.reloadData()
         })
@@ -45,7 +45,9 @@ class ViewController: UITableViewController {
         viewModel.getData(with: NetworkingClient.shared.params(city: "tokyo"))
         viewModel.getData(with: NetworkingClient.shared.params(city: "london"))
         viewModel.getLatLon { [weak self] (lat, lon) in
-            self?.viewModel.getData(with: NetworkingClient.shared.params(lat: lat, lon: lon))
+            self?.viewModel.getData(with: NetworkingClient.shared.params(lat: self?.viewModel.lat,
+                                                                         lon: self?.viewModel.lon))
+            
             self?.viewModel.dispatchGroup.notify(queue: .main) { [weak self] in
                 self?.tableView.reloadData()
             }
@@ -54,6 +56,11 @@ class ViewController: UITableViewController {
         viewModel.dispatchGroup.notify(queue: .main) { [weak self] in
             self?.tableView.reloadData()
         }
+    }
+    
+    @IBAction func refreshAction(_ sender: Any) {
+        viewModel.dataSource.removeAll()
+        getWeather()
     }
     
     //MARK: - Actions

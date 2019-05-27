@@ -14,8 +14,8 @@ class NetworkingClient {
     
     static let shared = NetworkingClient()
     
-    /// One function that configures the parameter of API call to OpenWeatherMaps.
-    /// It accepts a city or lat lon oordinates.
+    /// Configures and returns the parameter for API call to OpenWeatherMaps.
+    /// It accepts a city or lat and lon coordinates.
     func params(city:  String? = nil, lat: String? = nil, lon: String? = nil) -> [String:String] {
         let appID = "a5a1dac1431e30ad8c5453f69202008a"
         if let city = city{

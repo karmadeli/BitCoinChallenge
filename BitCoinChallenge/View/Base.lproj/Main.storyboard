@@ -46,6 +46,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="TiU-Lc-YIK">
+                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="o7d-Rc-Nm9">
+                            <connections>
+                                <action selector="refreshAction:" destination="P4P-mP-myy" id="QXp-n9-LeF"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ZZ4-PA-JOx">
                             <connections>
                                 <action selector="addCountryAction:" destination="P4P-mP-myy" id="4L9-mP-Nah"/>

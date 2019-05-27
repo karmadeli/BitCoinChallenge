@@ -16,20 +16,32 @@ class WeatherDataViewModel {
     let dispatchGroup = DispatchGroup()
     var savedCities: Results<UserSavedCities>?
     var locationClient: LocationClient?
+    var lat: String?
+    var lon: String?
     
     init(){
         self.locationClient = LocationClient()
     }
-
-    func getLatLon(completion: @escaping (String, String)->()){
-        NotificationCenter.default.addObserver(forName: NSNotification.Name("LatLon"), object: nil, queue: nil) { (notification) in
-            guard let data = notification.userInfo else {return}
-            guard let lat = data["lat"] as? String else{ return }
-            guard let lon = data["lon"] as? String else { return }
+    
+    func getLatLon(completion: @escaping (String?, String?)->()) {
+        determineLatLon { (lat, lon) in
             completion(lat, lon)
-            NotificationCenter.default.removeObserver(self, name: NSNotification.Name("LatLon"), object: nil)
         }
-        
+    }
+    
+    ///Determines whether to use coordinates from the locationClient or stored properties.
+    private func determineLatLon(completion: @escaping (String?, String?)->()) {
+        if self.lat == nil || self.lon == nil {
+            NotificationCenter.default.addObserver(forName: NSNotification.Name("LatLon"), object: nil, queue: nil) { [weak self] (notification) in
+                if let data = notification.userInfo, let lat = data["lat"] as? String, let lon = data["lon"] as? String{
+                    self?.lat = lat
+                    self?.lon = lon
+                    completion(lat, lon)
+                }
+            }
+        }else {
+            completion(self.lat, self.lon)
+        }
     }
     
     func getSavedCities(){
