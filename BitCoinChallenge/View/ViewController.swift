@@ -45,8 +45,8 @@ class ViewController: UITableViewController {
         viewModel.getData(with: NetworkingClient.shared.params(city: "tokyo"))
         viewModel.getData(with: NetworkingClient.shared.params(city: "london"))
         viewModel.getLatLon { [weak self] (lat, lon) in
-            self?.viewModel.getData(with: NetworkingClient.shared.params(lat: self?.viewModel.lat,
-                                                                         lon: self?.viewModel.lon))
+            self?.viewModel.getData(with: NetworkingClient.shared.params(lat: lat,
+                                                                         lon: lon))
             
             self?.viewModel.dispatchGroup.notify(queue: .main) { [weak self] in
                 self?.tableView.reloadData()
