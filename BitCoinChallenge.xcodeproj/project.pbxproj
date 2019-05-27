@@ -14,7 +14,6 @@
 		1F4EFF0F22988C5A0051498F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F4EFF0E22988C5A0051498F /* Assets.xcassets */; };
 		1F4EFF1222988C5A0051498F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F4EFF1022988C5A0051498F /* LaunchScreen.storyboard */; };
 		1F4EFF1D22988C5A0051498F /* BitCoinChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4EFF1C22988C5A0051498F /* BitCoinChallengeTests.swift */; };
-		1F4EFF282298A4F00051498F /* WeatherDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4EFF272298A4F00051498F /* WeatherDataModel.swift */; };
 		1F4EFF2A2298BA770051498F /* WeatherDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4EFF292298BA770051498F /* WeatherDataViewModel.swift */; };
 		1F4EFF2D2298C7FA0051498F /* WeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4EFF2B2298C7FA0051498F /* WeatherCell.swift */; };
 		1F4EFF2E2298C7FA0051498F /* WeatherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F4EFF2C2298C7FA0051498F /* WeatherCell.xib */; };
@@ -25,6 +24,7 @@
 		1F4EFF38229B065E0051498F /* NetworkingClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4EFF37229B065E0051498F /* NetworkingClient.swift */; };
 		1F4EFF3A229B53DA0051498F /* LocalStoreRetrieve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4EFF39229B53DA0051498F /* LocalStoreRetrieve.swift */; };
 		1F4EFF3C229B7FC10051498F /* LocationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F4EFF3B229B7FC10051498F /* LocationClient.swift */; };
+		1FB7DEC0229C642700283D37 /* WeatherDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB7DEBF229C642700283D37 /* WeatherDataModel.swift */; };
 		A69720A18EEE171A12C89DE1 /* Pods_BitCoinChallenge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4646D6F35A5667769CF90B60 /* Pods_BitCoinChallenge.framework */; };
 /* End PBXBuildFile section */
 
@@ -50,7 +50,6 @@
 		1F4EFF1822988C5A0051498F /* BitCoinChallengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BitCoinChallengeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F4EFF1C22988C5A0051498F /* BitCoinChallengeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitCoinChallengeTests.swift; sourceTree = "<group>"; };
 		1F4EFF1E22988C5A0051498F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1F4EFF272298A4F00051498F /* WeatherDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataModel.swift; sourceTree = "<group>"; };
 		1F4EFF292298BA770051498F /* WeatherDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataViewModel.swift; sourceTree = "<group>"; };
 		1F4EFF2B2298C7FA0051498F /* WeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCell.swift; sourceTree = "<group>"; };
 		1F4EFF2C2298C7FA0051498F /* WeatherCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeatherCell.xib; sourceTree = "<group>"; };
@@ -62,6 +61,7 @@
 		1F4EFF39229B53DA0051498F /* LocalStoreRetrieve.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStoreRetrieve.swift; sourceTree = "<group>"; };
 		1F4EFF3B229B7FC10051498F /* LocationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationClient.swift; sourceTree = "<group>"; };
 		1FB7DEBE229C571800283D37 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		1FB7DEBF229C642700283D37 /* WeatherDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WeatherDataModel.swift; path = BitCoinChallenge/Model/WeatherDataModel.swift; sourceTree = SOURCE_ROOT; };
 		220E0FD44611FAB16EFD7D7E /* Pods-BitCoinChallengeTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BitCoinChallengeTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BitCoinChallengeTests/Pods-BitCoinChallengeTests.release.xcconfig"; sourceTree = "<group>"; };
 		4646D6F35A5667769CF90B60 /* Pods_BitCoinChallenge.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BitCoinChallenge.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8430D89008E8A210BC329B0F /* Pods_BitCoinChallengeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BitCoinChallengeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,7 +159,7 @@
 		1FB7DEB9229C50C900283D37 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1F4EFF272298A4F00051498F /* WeatherDataModel.swift */,
+				1FB7DEBF229C642700283D37 /* WeatherDataModel.swift */,
 			);
 			name = Model;
 			path = "New Group1";
@@ -397,8 +397,8 @@
 				1F4EFF2D2298C7FA0051498F /* WeatherCell.swift in Sources */,
 				1F4EFF38229B065E0051498F /* NetworkingClient.swift in Sources */,
 				1F4EFF3022997E420051498F /* DetailViewController.swift in Sources */,
+				1FB7DEC0229C642700283D37 /* WeatherDataModel.swift in Sources */,
 				1F4EFF3A229B53DA0051498F /* LocalStoreRetrieve.swift in Sources */,
-				1F4EFF282298A4F00051498F /* WeatherDataModel.swift in Sources */,
 				1F4EFF2A2298BA770051498F /* WeatherDataViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

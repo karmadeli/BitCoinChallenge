@@ -5,7 +5,6 @@
 //  Created by Chad Murdock on 5/24/19.
 //  Copyright © 2019 KarmaDeli Works. All rights reserved.
 //
-
 import Foundation
 import UIKit
 import RealmSwift
@@ -15,7 +14,7 @@ struct WeatherDataModel {
     var temp: String = ""
     var windSpeed: String = ""
     var windDirection: String = ""
-
+    
     var cloudiness: String = ""
     var icon: UIImage? = nil
     var iconID: String = ""
