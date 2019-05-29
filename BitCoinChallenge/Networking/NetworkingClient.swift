@@ -34,7 +34,6 @@ class NetworkingClient {
         Alamofire.request(url, method: .get, parameters: params).responseJSON { [weak self] (response)  in
             if response.result.isSuccess {
                 //model your data
-                print(response)
                 var weatherData = WeatherDataModel()
                 guard let value = response.result.value as? [String : Any] else { return}
                 if let name = value["name"] as? String {
