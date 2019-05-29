@@ -39,16 +39,24 @@ class NetworkingClient {
                 if let name = value["name"] as? String {
                     weatherData.cityName = name
                 }else { print("Failed to get name.") }
+                
                 if let main = value["main"] as? [String : Any], let temp = main["temp"] as? Double {
                     weatherData.temp = "\(String(Int(temp.rounded())))°F"
                 }else { print("Failed to get main weather data.") }
+                
                 if let clouds = value["clouds"] as? [String: Any], let cloudiness = clouds["all"] as? Int {
                     weatherData.cloudiness = String(cloudiness)
                 }else { print("Failed to get cloud data.") }
-                if let wind = value["wind"] as? [String: Any], let speed = wind["speed"] as? Double, let degrees = wind["deg"] as? Int {
-                    weatherData.windSpeed = String(speed)
-                    weatherData.windDirection = String(degrees)
+                
+                if let wind = value["wind"] as? [String: Any] {
+                    if let speed = wind["speed"] as? Double {
+                        weatherData.windSpeed = String(speed)
+                    } else { print("Failed to get wind speed.") }
+                    if let degrees = wind["deg"] as? Int {
+                        weatherData.windDirection = String(degrees)
+                    } else { print("Failed to get wind direction.") }
                 }else { print("Failed to get wind data.") }
+                
                 if let weatherArray = value["weather"] as? NSArray, let weatherDict = weatherArray[0] as? [String : Any], let desc = weatherDict["description"] as? String, let icon = weatherDict["icon"] as? String {
                     weatherData.description = desc
                     weatherData.iconID = icon
