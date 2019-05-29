@@ -54,7 +54,7 @@ class NetworkingClient {
                     } else { print("Failed to get wind speed.") }
                     if let degrees = wind["deg"] as? Int {
                         weatherData.windDirection = String(degrees)
-                    } else { print("Failed to get wind direction.") }
+                    } else { print("Failed to get wind direction for: \(weatherData.cityName)") }
                 }else { print("Failed to get wind data.") }
                 
                 if let weatherArray = value["weather"] as? NSArray, let weatherDict = weatherArray[0] as? [String : Any], let desc = weatherDict["description"] as? String, let icon = weatherDict["icon"] as? String {
