@@ -8,10 +8,12 @@
 
 import Foundation
 import RealmSwift
-
+import UIKit
 
 /// Handles the saving and deleting of object from Realm.
 class RealmCRUDService {
+    
+    private var notificationToken: NotificationToken?
     static let shared = RealmCRUDService()
     var realm: Realm? {
         do{
@@ -21,6 +23,17 @@ class RealmCRUDService {
             print(error)
             return nil
         }
+    }
+    
+    //Realm triggered datasource refresh
+    func realmObserver(vc: UIViewController, tableView: UITableView){
+        notificationToken = RealmCRUDService.shared.realm?.observe({ (notification, realm) in
+            tableView.reloadData()
+        })
+    }
+    
+    func realmObserverStop(){
+        notificationToken?.invalidate()
     }
     
     func delete<T: Object>(realmObject : T){

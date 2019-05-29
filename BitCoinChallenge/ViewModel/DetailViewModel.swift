@@ -17,7 +17,7 @@ class DetailViewModel {
     var windDirection: String = ""
     var windSpeed: String = ""
     
-    func setup(model: WeatherDataModel) -> DetailViewModel{
+    func setup(model: WeatherDataModel) -> DetailViewModel {
         name = model.cityName
         windSpeed = model.windSpeed
         windDirection = model.windDirection
@@ -27,7 +27,7 @@ class DetailViewModel {
         return self
     }
     ///Takes the degree value and returns one of the 8 main cardinal points.
-    func getCardinalDirection(degree: String)-> String{
+    func getCardinalDirection(degree: String)-> String {
         guard let degree = Int(degree) else {return ""}
         switch degree {
         case 338...360: return "N"

@@ -35,8 +35,12 @@ class LocationClient: NSObject, CLLocationManagerDelegate {
         let lat = String(location.coordinate.latitude)
         let lon = String(location.coordinate.longitude)
 
-        NotificationCenter.default.post(name: NSNotification.Name("LatLon"), object: nil, userInfo: ["lat": lat, "lon" : lon])
+        NotificationCenter.default.post(name: NSNotification.Name.LatLon, object: nil, userInfo: ["lat": lat, "lon" : lon])
         }
-    }
+}
+
+extension NSNotification.Name {
+    static let LatLon = NSNotification.Name("LatLon")
+}
 
 

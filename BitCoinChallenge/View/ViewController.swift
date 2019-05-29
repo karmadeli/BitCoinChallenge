@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreLocation
 import RealmSwift
 
 class ViewController: UITableViewController {
@@ -29,19 +28,21 @@ class ViewController: UITableViewController {
             vc.viewModel = viewModal
         }
     }
-
-    func setup(){
+    
+    deinit {
+        RealmCRUDService.shared.realmObserverStop()
+    }
+ 
+    //MARK: - Setup Functions
+    func setup() {
         viewModel.setTitleView(navItem: navigationItem)
         self.tableView.register(UINib(nibName: "WeatherCell", bundle: nil), forCellReuseIdentifier: "weatherCell")
         tableView.tableFooterView = UIView()
+        RealmCRUDService.shared.realmObserver(vc: self, tableView: tableView)
         
-        //Realm triggered datasource refresh
-        notificationToken = RealmCRUDService.shared.realm?.observe({ [weak self] (notification, realm) in
-            self?.tableView.reloadData()
-        })
     }
     
-    func getWeather(){
+    func getWeather() {
         viewModel.getData(with: NetworkingClient.shared.params(city: "tokyo"))
         viewModel.getData(with: NetworkingClient.shared.params(city: "london"))
         viewModel.getLatLon { [weak self] (lat, lon) in
@@ -58,12 +59,12 @@ class ViewController: UITableViewController {
         }
     }
     
+    //MARK: - Actions
     @IBAction func refreshAction(_ sender: Any) {
         viewModel.dataSource.removeAll()
         getWeather()
     }
     
-    //MARK: - Actions
     @IBAction func addCountryAction(_ sender: Any) {
         LocalStoreRetrieve.shared.saveCity(vc: self, vm: viewModel)
     }

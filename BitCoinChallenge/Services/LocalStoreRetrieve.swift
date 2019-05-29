@@ -13,16 +13,16 @@ import  UIKit
 class LocalStoreRetrieve {
     static let shared = LocalStoreRetrieve()
     
-    func saveCity(vc: UIViewController, vm: WeatherDataViewModel){
+    func saveCity(vc: UIViewController, vm: WeatherDataViewModel) {
         AlertInputService.addCity(vc: vc) { (city) in
-            if city != ""{
+            if city != "" {
                 NetworkingClient.shared.getData(with: NetworkingClient.shared.params(city: city), completion: { (weatherData) in
                     if weatherData.cityName != "" {
                         vm.dataSource.append(weatherData)
                         let userCity = UserSavedCities()
                         userCity.name = weatherData.cityName
                         RealmCRUDService.shared.create(realmObject: userCity)
-                    }else{
+                    }else {
                         print("Didnt save city")
                     }
                 })

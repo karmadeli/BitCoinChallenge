@@ -12,10 +12,10 @@ import RealmSwift
 
 class WeatherDataViewModel {
     
+    private var locationClient: LocationClient?
+    private var savedCities: Results<UserSavedCities>?
     var dataSource = [WeatherDataModel]()
     let dispatchGroup = DispatchGroup()
-    var savedCities: Results<UserSavedCities>?
-    var locationClient: LocationClient?
     var lat: String?
     var lon: String?
     
@@ -32,7 +32,7 @@ class WeatherDataViewModel {
     ///Determines whether to use coordinates from the locationClient or stored properties.
     private func determineLatLon(completion: @escaping (String?, String?)->()) {
         if self.lat == nil || self.lon == nil {
-            NotificationCenter.default.addObserver(forName: NSNotification.Name("LatLon"), object: nil, queue: nil) { [weak self] (notification) in
+            NotificationCenter.default.addObserver(forName: NSNotification.Name.LatLon, object: nil, queue: nil) { [weak self] (notification) in
                 if let data = notification.userInfo, let lat = data["lat"] as? String, let lon = data["lon"] as? String{
                     self?.lat = lat
                     self?.lon = lon
@@ -42,9 +42,10 @@ class WeatherDataViewModel {
         }else {
             completion(self.lat, self.lon)
         }
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.LatLon, object: LocationClient.self)
     }
     
-    func getSavedCities(){
+    func getSavedCities() {
         savedCities = RealmCRUDService.shared.realm?.objects(UserSavedCities.self)
         if let cities = savedCities{
             for city in cities{
@@ -53,24 +54,23 @@ class WeatherDataViewModel {
         }
     }
  
-    func setTitleView(navItem: UINavigationItem){
+    func setTitleView(navItem: UINavigationItem) {
         let logo = UIImage(named: "bitcoin")
         let titleImageView  = UIImageView(image: logo)
         navItem.titleView = titleImageView
     }
     
-    func getData(with params: [String:String]){
+    func getData(with params: [String:String]) {
         dispatchGroup.enter()
-        NetworkingClient.shared.getData(with: params) { [weak self]  (weatherData) in
-            if params["q"] == nil{
+        NetworkingClient.shared.getData(with: params) { [weak self] (weatherData) in
+            if params["q"] == nil {
                 self?.dataSource.insert(weatherData, at: 0)
             }else{
                 self?.dataSource.append(weatherData)
             }
             self?.dispatchGroup.leave()
         }
-        
     }
-   
+    
 }
 
