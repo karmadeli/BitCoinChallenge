@@ -13,7 +13,6 @@ class ViewController: UITableViewController {
   
     //MARK: - Properties
     let viewModel = WeatherDataViewModel()
-    var notificationToken: NotificationToken?
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
